@@ -1,0 +1,15 @@
+import com.kunev.Mood;
+import function com.DrlLogger.*;
+
+
+dialect "java"
+
+rule "chek mood"
+when
+    $m: Mood();
+    m: com.kunev.Mood(day == 4 )
+then
+    m.setState("Отличное");
+    info(drools, "Got Matched rule:'{}', input body:{}", drools.getRule().getName(), $m);
+    info(drools, "Resulting rideFare body:{}", m);
+end
